@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElanZen — Vital Impulse Ontological Coaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --dark2: #1a1a1a;
+    --gold: #c9956b;
+    --gold-light: #e0b88a;
+    --gold-bright: #d4a843;
+    --copper: #b87333;
+    --cream: #f5efe6;
+    --cream-soft: #ede4d8;
+    --text-light: #d4cfc7;
+    --text-muted: #8a8279;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--black);
+    color: var(--text-light);
+    overflow-x: hidden;
+  }
+
+  /* ============ NAVBAR ============ */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.4s, backdrop-filter 0.4s;
+  }
+
+  nav.scrolled {
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201, 149, 107, 0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    font-weight: 300;
+    color: var(--gold-light);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .nav-menu-btn span {
+    width: 24px;
+    height: 1.5px;
+    background: var(--gold);
+    transition: 0.3s;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 70% 20%, rgba(201, 149, 107, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 30% 80%, rgba(184, 115, 51, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(201, 149, 107, 0.03) 0%, transparent 70%);
+  }
+
+  .hero-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-particle 8s infinite;
+  }
+
+  @keyframes float-particle {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+  }
+
+  .hero-content {
+    text-align: center;
+    z-index: 2;
+    padding: 2rem;
+    animation: fadeInUp 1.2s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-leaf {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    animation: gentleSway 4s ease-in-out infinite;
+    filter: sepia(0.5) hue-rotate(-10deg) brightness(1.2);
+  }
+
+  @keyframes gentleSway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  .hero-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 12px;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    opacity: 0.8;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 2rem;
+  }
+
+  .hero-phrase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream-soft);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+    opacity: 0.9;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 14px 45px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateX(-101%);
+    transition: transform 0.4s;
+  }
+
+  .hero-cta:hover { color: var(--black); }
+  .hero-cta:hover::before { transform: translateX(0); }
+  .hero-cta span { position: relative; z-index: 1; }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeInUp 1.5s ease-out 0.5s both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(0.6); }
+  }
+
+  /* ============ SECTIONS COMMON ============ */
+  section { padding: 7rem 2rem; }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .section-line {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 3rem;
+  }
+
+  /* ============ ABOUT ============ */
+  .about {
+    background: var(--dark);
+    position: relative;
+  }
+
+  .about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,149,107,0.3), transparent);
+  }
+
+  .about-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+
+  .about-image-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(201,149,107,0.15), rgba(184,115,51,0.08));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(201,149,107,0.2);
+    position: relative;
+  }
+
+  .about-silhouette {
+    font-size: 8rem;
+    opacity: 0.6;
+    filter: sepia(0.8) hue-rotate(-15deg);
+  }
+
+  .about-image-inner::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(201,149,107,0.15);
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .about-text p strong {
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  .about-signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--gold);
+    margin-top: 2rem;
+  }
+
+  /* ============ SERVICES ============ */
+  .services { background: var(--black); }
+
+  .services-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .service-card {
+    padding: 2.5rem;
+    background: var(--dark);
+    border: 1px solid rgba(201,149,107,0.1);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .service-card:hover {
+    border-color: rgba(201,149,107,0.25);
+    transform: translateY(-4px);
+  }
+
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--gold-light);
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  /* ============ EVENT ============ */
+  .event {
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .event::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(201,149,107,0.06) 0%, transparent 60%);
+  }
+
+  .event-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .event-badge {
+    display: inline-block;
+    padding: 6px 20px;
+    border: 1px solid var(--gold);
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .event-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 6px;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-edition {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .event-description {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .event-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(201,149,107,0.15);
+    border-bottom: 1px solid rgba(201,149,107,0.15);
+  }
+
+  .event-detail-item {
+    text-align: center;
+  }
+
+  .event-detail-label {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .event-detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  .event-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .event-highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  .event-highlight-icon {
+    color: var(--gold);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .event-price {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-price-currency {
+    font-size: 1rem;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .event-price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+
+  .event-price-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .event-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 16px 40px;
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .event-cta:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(201,149,107,0.2);
+  }
+
+  /* ============ FACILITATORS ============ */
+  .facilitators { background: var(--black); }
+
+  .facilitators-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .facilitator-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background: var(--dark);
+    border: 1px solid rgba(201,149,107,0.08);
+    transition: all 0.4s;
+  }
+
+  .facilitator-card:hover {
+    border-color: rgba(201,149,107,0.2);
+    transform: translateY(-4px);
+  }
+
+  .facilitator-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background: linear-gradient(135deg, rgba(201,149,107,0.15), rgba(184,115,51,0.08));
+    border: 1px solid rgba(201,149,107,0.2);
+  }
+
+  .facilitator-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+
+  .facilitator-role {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* ============ CONTACT ============ */
+  .contact {
+    background: var(--dark);
+    text-align: center;
+    position: relative;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,149,107,0.05) 0%, transparent 60%);
+  }
+
+  .contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-phrase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--cream-soft);
+    margin-bottom: 3rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .contact-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 18px 50px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 2px;
+    transition: all 0.3s;
+    margin-bottom: 2rem;
+  }
+
+  .contact-whatsapp:hover {
+    background: #1fb855;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(37,211,102,0.2);
+  }
+
+  .contact-whatsapp-icon {
+    font-size: 1.4rem;
+  }
+
+  .contact-phone {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+  }
+
+  .contact-location {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--black);
+    border-top: 1px solid rgba(201,149,107,0.1);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-sub {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  /* ============ ANIMATIONS ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-menu-btn { display: flex; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-image { max-height: 300px; }
+
+    .services-grid { grid-template-columns: 1fr; }
+
+    .event-details { grid-template-columns: 1fr; gap: 1.2rem; }
+    .event-highlights { grid-template-columns: 1fr; }
+
+    .facilitators-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+    section { padding: 5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Elan<span>Zen</span></a>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#evento">Evento</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-leaf">🍃</div>
+    <h1 class="hero-brand">ElanZen</h1>
+    <p class="hero-tagline">Vital Impulse Ontological Coaching</p>
+    <div class="hero-divider"></div>
+    <p class="hero-phrase">
+      Un espacio para reconectar contigo, honrar tu esencia 
+      y fortalecer tu bienestar integral
+    </p>
+    <a href="#evento" class="hero-cta"><span>Próximo evento</span></a>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="nosotros">
+  <div class="section-label reveal">Nuestra Esencia</div>
+  <h2 class="section-title reveal">Coaching Ontológico Organizacional</h2>
+  <div class="section-line reveal"></div>
+  <div class="about-grid">
+    <div class="about-image reveal">
+      <div class="about-image-inner">
+        <div class="about-silhouette">✧</div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <p>
+        En <strong>ElanZen</strong> creemos que cada persona lleva dentro un impulso vital 
+        que espera ser despertado. A través del <strong>coaching ontológico</strong>, 
+        acompañamos procesos de transformación profunda donde reconectas con tu ser, 
+        descubres nuevas posibilidades y redesignas tu realidad.
+      </p>
+      <p>
+        Nuestro enfoque integra cuerpo, mente y emociones para facilitar 
+        cambios duraderos tanto a nivel personal como organizacional. 
+        Trabajamos con líderes, equipos y mujeres que desean vivir desde 
+        un lugar de autenticidad y poder interior.
+      </p>
+      <p>
+        Facilitado por <strong>Guadalupe Navarrete</strong>, Coach Ontológico y 
+        Organizacional, con una pasión profunda por el bienestar integral 
+        y la transformación humana.
+      </p>
+      <div class="about-signature">— Guadalupe Navarrete</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="section-label reveal">¿Qué Vivirás?</div>
+  <h2 class="section-title reveal">Nuestras Experiencias</h2>
+  <div class="section-line reveal"></div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🌿</span>
+      <h3 class="service-name">Reconexión Emocional</h3>
+      <p class="service-desc">
+        Recupera el vínculo con tus emociones, aprende a escucharlas 
+        y transforma tu relación con el sentir. Un viaje hacia la 
+        autenticidad emocional.
+      </p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🔥</span>
+      <h3 class="service-name">Activación del Poder Interno</h3>
+      <p class="service-desc">
+        Despierta esa fuerza que habita en ti. Descubre tus recursos 
+        internos, fortalece tu autoconfianza y actúa desde un lugar 
+        de poder y claridad.
+      </p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">💧</span>
+      <h3 class="service-name">Liberación de Cargas</h3>
+      <p class="service-desc">
+        Suelta aquello que ya no te pertenece. Creencias limitantes, 
+        miedos y patrones que te detienen. Haz espacio para lo nuevo 
+        que quieres crear.
+      </p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">☯</span>
+      <h3 class="service-name">Equilibrio Mente-Cuerpo</h3>
+      <p class="service-desc">
+        Integra todas las dimensiones de tu ser. Logra armonía entre 
+        tus pensamientos, emociones y cuerpo para vivir con plenitud 
+        y bienestar integral.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT -->
+<section class="event" id="evento">
+  <div class="event-container">
+    <div class="section-label reveal">Próximo Evento</div>
+    <div class="event-badge reveal">Edición Especial</div>
+    <h2 class="event-name reveal">MUJER 360</h2>
+    <p class="event-edition reveal">✦ Edición Especial Día de la Madre ✦</p>
+    <p class="event-description reveal">
+      Un espacio sagrado para reconectar contigo, honrar tu esencia 
+      y fortalecer tu bienestar integral. Un momento de transformación, 
+      amor propio y renovación.
+    </p>
+
+    <div class="event-details reveal">
+      <div class="event-detail-item">
+        <p class="event-detail-label">Fecha</p>
+        <p class="event-detail-value">Sábado 2 de Mayo</p>
+      </div>
+      <div class="event-detail-item">
+        <p class="event-detail-label">Horario</p>
+        <p class="event-detail-value">10:00 AM – 2:00 PM</p>
+      </div>
+      <div class="event-detail-item">
+        <p class="event-detail-label">Lugar</p>
+        <p class="event-detail-value">Valle de los Chillos</p>
+      </div>
+    </div>
+
+    <div class="event-highlights reveal">
+      <div class="event-highlight">
+        <span class="event-highlight-icon">✦</span>
+        Reconexión emocional
+      </div>
+      <div class="event-highlight">
+        <span class="event-highlight-icon">✦</span>
+        Activación de tu poder interno
+      </div>
+      <div class="event-highlight">
+        <span class="event-highlight-icon">✦</span>
+        Liberación de cargas
+      </div>
+      <div class="event-highlight">
+        <span class="event-highlight-icon">✦</span>
+        Equilibrio mente-cuerpo
+      </div>
+      <div class="event-highlight">
+        <span class="event-highlight-icon">✦</span>
+        Lunch holístico vital incluido
+      </div>
+      <div class="event-highlight">
+        <span class="event-highlight-icon">✦</span>
+        Parqueadero privado
+      </div>
+    </div>
+
+    <div class="event-price reveal">
+      <span class="event-price-currency">$</span>
+      <span class="event-price-amount">45</span>
+    </div>
+    <p class="event-price-note reveal">Incluye lunch holístico vital energético</p>
+    <div class="reveal">
+      <a href="https://wa.me/5930993373456?text=Hola%2C%20quiero%20reservar%20mi%20cupo%20para%20Mujer%20360" 
+         class="event-cta" target="_blank">
+        Reservar mi cupo →
+      </a>
+    </div>
+    <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--gold); font-weight: 400;" class="reveal">
+      ⚡ Cupos limitados
+    </p>
+  </div>
+</section>
+
+<!-- FACILITATORS -->
+<section class="facilitators">
+  <div class="section-label reveal">El Equipo</div>
+  <h2 class="section-title reveal">Facilitadoras</h2>
+  <div class="section-line reveal"></div>
+  <div class="facilitators-grid">
+    <div class="facilitator-card reveal">
+      <div class="facilitator-avatar">🌿</div>
+      <h3 class="facilitator-name">Guadalupe Navarrete</h3>
+      <p class="facilitator-role">Coach Ontológico y Organizacional</p>
+    </div>
+    <div class="facilitator-card reveal">
+      <div class="facilitator-avatar">🩺</div>
+      <h3 class="facilitator-name">Dra. Nutricionista</h3>
+      <p class="facilitator-role">Nutrición y Bienestar</p>
+    </div>
+    <div class="facilitator-card reveal">
+      <div class="facilitator-avatar">✨</div>
+      <h3 class="facilitator-name">Ma Fer</h3>
+      <p class="facilitator-role">Esteticista y Terapeuta Corporal</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="contact-container">
+    <div class="section-label reveal">Conversemos</div>
+    <h2 class="section-title reveal">Conecta con Nosotros</h2>
+    <div class="section-line reveal"></div>
+    <p class="contact-phrase reveal">
+      El primer paso hacia tu transformación comienza 
+      con una conversación
+    </p>
+    <div class="reveal">
+      <a href="https://wa.me/5930993373456?text=Hola%2C%20quiero%20más%20información%20sobre%20ElanZen" 
+         class="contact-whatsapp" target="_blank">
+        <span class="contact-whatsapp-icon">💬</span>
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+    <br>
+    <span class="contact-phone reveal">0993 373 456</span>
+    <p class="contact-location reveal">📍 Valle de los Chillos, Ecuador</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ElanZen</div>
+  <p class="footer-sub">Vital Impulse Ontological Coaching</p>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Particles
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDelay = Math.random() * 8 + 's';
+    p.style.animationDuration = (6 + Math.random() * 6) + 's';
+    p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
+    container.appendChild(p);
+  }
+</script>
+</body>
+</html>
